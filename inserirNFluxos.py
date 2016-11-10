@@ -20,6 +20,7 @@ data = {
         }
        
 for i in range(qnt):
+    # Caracteristicas do fluxo
     data['table']['flow'].insert(i, {
         'id': str(i+1),
         'actions': 'drop',
@@ -27,7 +28,7 @@ for i in range(qnt):
         'idle_timeout': '1000',
         'priority': '10',
         'matches': {
-            'ip': None,
+            'ip': '10.10.10.202',
             'nw_dst': '10.10.10.250' 
         },
         'n_bytes': '0',
@@ -54,6 +55,6 @@ response = requests.put(url, data=json.dumps(data), headers=headers)
 	curl --noproxy localhost -u admin:admin -X DELETE 'http://localhost:8181/restconf/config/opendaylight-inventory:nodes/node/openflow:268891663797772/table/0'
 
 	ou se nao esta no localhost:
-	curl --noproxy 10.10.10.202 -u admin:admin -X DELETE 'http://10.10.10.202:8181/restconf/config/opendaylight-inventory:nodes/node/openflow:268891663797772/table/0'
+	curl --noproxy <IPcontroller> -u admin:admin -X DELETE 'http://<IPcontroller>:8181/restconf/config/opendaylight-inventory:nodes/node/openflow:268891663797772/table/0'
 """
 
